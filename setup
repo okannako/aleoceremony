@@ -1,0 +1,24 @@
+apt update
+curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
+docker pull aleohq/setup-contributor:latest
+tmux
+docker run -it --rm --name setupcontrib --env COORD_URL=https://outer-ceremony.aleo.org/ aleohq/setup-contributor:latest
+
+#Hiçbir şeye yapmadan ctrl+b sonra d ye basarak tmux u arkaya atıyoruz. 
+
+docker exec -it setupcontrib /bin/bash
+cd data
+rm contrib-keys.json
+cat > contrib-keys.json      #Bu kodda önceki Ceremony de aldığımız json dosyasının içindekileri buraya yapıştırarak enter a basıyoruz
+ctrl+c
+
+#Tekrar putty kullanarak root ile vps e giriş yapıyoruz.
+
+tmux ls
+tmux attach -t 0
+
+#Şifre ekranında kalmıştık (önceki ceremony de kullandığınız şifreyi girin) sonra 2 defa şifre giriyoruz biraz bekledikten sonra 3. defada istediğinde bir kere daha girip sıralamaya almasını bekliyoruz.
+
+NOT: KESİNLİKLE VİDEOYU İZLEYEREK İŞLEM YAPIN.
+
+VİDEO: https://youtu.be/g5lGYo47KUY
